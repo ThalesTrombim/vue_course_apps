@@ -70,7 +70,7 @@ export default {
       })
       .then(res => {
         if(res.ok) {
-
+          // 
         } else {
           throw new Error('Could not save data!');
         }
