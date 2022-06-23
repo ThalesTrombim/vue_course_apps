@@ -9,7 +9,7 @@
   <section>
     <base-card>
       <header>
-        <h2>Insteread? Reach out now!</h2>
+        <h2>Interested? Reach out now!</h2>
         <base-button isLink :to="contactLink">
           Contact
         </base-button>
@@ -48,7 +48,7 @@ export default {
       return this.selectedCoach.description;
     },
     contactLink() {
-      return `${this.$route.path}/${this.id}/contact`;
+      return `${this.$route.path}/contact`;
     }
   },
   created() {

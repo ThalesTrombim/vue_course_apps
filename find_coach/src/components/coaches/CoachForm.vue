@@ -114,7 +114,6 @@ export default {
         rate: this.rate.val,
         areas: this.areas.val
       }
-      console.log(formData)
       this.$emit('save-data', formData);
     }
   }
