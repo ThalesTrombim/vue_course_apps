@@ -30,7 +30,11 @@ export default {
       id: userId,
     });
   },
-  async loadCoaches(context) {
+  async loadCoaches(context, payload) {
+    if (!payload.forceRefresh && !context.getters.shouldUpdate) {
+      return;
+    }
+
     const response = await fetch(
       `https://main-vue-thales-default-rtdb.firebaseio.com/coaches.json`
     );
@@ -42,7 +46,6 @@ export default {
       throw error;
     }
 
-    console.log(responseData);
     const coaches = [];
 
     for (const key in responseData) {
@@ -57,7 +60,7 @@ export default {
       coaches.push(coach);
     }
 
-    console.log(coaches);
     context.commit('setCoaches', coaches);
+    context.commit('setFetchTimeStamp');
   },
 };
