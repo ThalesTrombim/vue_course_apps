@@ -10,8 +10,10 @@ export default {
       areas: data.areas,
     };
 
+    const token = context.rootGetters.token;
+
     const response = await fetch(
-      `https://main-vue-thales-default-rtdb.firebaseio.com/coaches/${userId}.json`,
+      `https://main-vue-thales-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=${token}`,
       {
         method: 'PUT',
         body: JSON.stringify(coachData),
@@ -30,6 +32,7 @@ export default {
       id: userId,
     });
   },
+
   async loadCoaches(context, payload) {
     if (!payload.forceRefresh && !context.getters.shouldUpdate) {
       return;
